@@ -75,10 +75,10 @@ function App() {
     var moonPhaseFound = "uh oh";
 
     if (calcMoonPhase < 2) moonPhaseFound = "New Moon!";
-    else if (calcMoonPhase >= 2 && calcMoonPhase < 9) moonPhaseFound = "Waxing Crescent!";
-    else if (calcMoonPhase >= 9 && calcMoonPhase < 15) moonPhaseFound = "Waxing Gibbious!";
+    else if (calcMoonPhase >= 2 && calcMoonPhase < 8) moonPhaseFound = "Waxing Crescent!";
+    else if (calcMoonPhase >= 8 && calcMoonPhase < 15) moonPhaseFound = "Waxing Gibbious!";
     else if (calcMoonPhase >= 15 && calcMoonPhase < 17) moonPhaseFound = "Full Moon!";
-    else if (calcMoonPhase >= 17 && calcMoonPhase < 24) moonPhaseFound = "Waning Gibbious!";
+    else if (calcMoonPhase >= 17 && calcMoonPhase < 23) moonPhaseFound = "Waning Gibbious!";
     else moonPhaseFound = "Waning Crescent!";
 
     setMoonPhase("When you were born, the moon was in the phase:");
