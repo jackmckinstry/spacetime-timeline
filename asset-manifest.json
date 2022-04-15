@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/spacetime-timeline/static/css/main.35d3a8a2.css",
+    "main.js": "/spacetime-timeline/static/js/main.b8dad45a.js",
+    "index.html": "/spacetime-timeline/index.html",
+    "main.35d3a8a2.css.map": "/spacetime-timeline/static/css/main.35d3a8a2.css.map",
+    "main.b8dad45a.js.map": "/spacetime-timeline/static/js/main.b8dad45a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.35d3a8a2.css",
+    "static/js/main.b8dad45a.js"
+  ]
+}
