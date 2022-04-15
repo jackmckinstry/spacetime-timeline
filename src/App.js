@@ -40,7 +40,7 @@ function App() {
           <input
             onChange={handle_change}
             type="date"
-            //placeholder="What's your birthday?"
+            placeholder="What's your birthday?"
             value={bDate}
           />
           <button
