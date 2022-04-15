@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Componenet } from "react";
+import React, { useState } from "react";
 import './App.css';
 import CountUp from 'react-countup';
 
@@ -21,8 +21,11 @@ function App() {
   const [h2_Text, setSubHeading] = useState("");
   
   const [moonPhase, setMoonPhase] = useState("");
+  const [knownPhase, setPhase] = useState("");
+
   const [milesTraveled, setMiles] = useState("");
   const [milesMsg, setMilesMsg] = useState("");
+
   const [progressMade, setProgressMade] = useState("");
   
   const [isMousedOver, setMouseOver] = useState(false);
@@ -43,11 +46,47 @@ function App() {
     // setHeading(bDate);
     console.log(bDate);
     
+    var calcMoonPhase = "bruh";
+    const newBDate = new Date(bDate);
+
+    var y = newBDate.getFullYear();
+    var m = newBDate.getMonth() + 1;
+    var d = newBDate.getDate() + 1
+    if (m == 1 || m == 2) {
+      y--;
+      m += 12;
+    }
+
+    // find julian date of user's birthday:
+    var a = y/100;
+    var b = a/4;
+    var c = 2-a+b;
+    var e = 365.25 * (y+4716);
+    var f = 30.6001 * (m+1);
+    var jd = c+d+e+f-1524.5;
+
+    var daysSinceNew = (jd - 2415020.500);
+    calcMoonPhase = daysSinceNew / 29.53;
+    var toSplit = " " + calcMoonPhase;
+    const myArray = toSplit.split(".");
+    let decimal = myArray[1];
+    decimal = "0." + decimal;
+    calcMoonPhase = decimal * 29.53;
+    var moonPhaseFound = "uh oh";
+
+    if (calcMoonPhase < 2) moonPhaseFound = "New Moon!";
+    else if (calcMoonPhase >= 2 && calcMoonPhase < 9) moonPhaseFound = "Waxing Crescent!";
+    else if (calcMoonPhase >= 9 && calcMoonPhase < 15) moonPhaseFound = "Waxing Gibbious!";
+    else if (calcMoonPhase >= 15 && calcMoonPhase < 17) moonPhaseFound = "Full Moon!";
+    else if (calcMoonPhase >= 17 && calcMoonPhase < 24) moonPhaseFound = "Waning Gibbious!";
+    else moonPhaseFound = "Waning Crescent!";
+
     setMoonPhase("When you were born, the moon was in the phase:");
-    
+    setPhase(moonPhaseFound);
+
     const current = new Date();
 
-    setMiles(dateConverter(bDate, current)*1599048);
+    setMiles(dateConverter(newBDate, current)*1599048);
     setMilesMsg("Since birth, you've traveled around the sun: ");
 
     setProgressMade("A lot of progress has been made in space exploration and scientific discovery since you’ve been on this planet (and prior!)...");
@@ -88,15 +127,15 @@ function App() {
           {milesMsg}
           <CountUp
             start={milesTraveled}
-            end={milesTraveled+(5552.25)}
-            duration={300}
+            end={milesTraveled+(11104)}
+            duration={600}
             separator=","
             suffix=" miles"
           ></CountUp>
         </h2>
 
 
-        <h2>{moonPhase}</h2>
+        <h2>{moonPhase} {knownPhase}</h2>
         
         <h2>{progressMade}</h2>
         
