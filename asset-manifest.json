@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/spacetime-timeline/static/css/main.35d3a8a2.css",
-    "main.js": "/spacetime-timeline/static/js/main.b8dad45a.js",
+    "main.css": "/spacetime-timeline/static/css/main.ce4b0ea8.css",
+    "main.js": "/spacetime-timeline/static/js/main.f159df00.js",
+    "static/media/moon.png": "/spacetime-timeline/static/media/moon.980e0694f0122e034101.png",
     "index.html": "/spacetime-timeline/index.html",
-    "main.35d3a8a2.css.map": "/spacetime-timeline/static/css/main.35d3a8a2.css.map",
-    "main.b8dad45a.js.map": "/spacetime-timeline/static/js/main.b8dad45a.js.map"
+    "main.ce4b0ea8.css.map": "/spacetime-timeline/static/css/main.ce4b0ea8.css.map",
+    "main.f159df00.js.map": "/spacetime-timeline/static/js/main.f159df00.js.map"
   },
   "entrypoints": [
-    "static/css/main.35d3a8a2.css",
-    "static/js/main.b8dad45a.js"
+    "static/css/main.ce4b0ea8.css",
+    "static/js/main.f159df00.js"
   ]
 }
