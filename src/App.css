@@ -25,10 +25,10 @@
 }
 
 body {
-  font-family: "Source Sans Pro", sans-serif;
-  color: white;
-  font-weight: 150;
-  background: #5b89e6;
+  font-family: "Noto Sans", sans-serif;
+  color: black;
+  font-weight: 100;
+  background: #749ff5;
   width: 100%;
   height: 100%;
 }

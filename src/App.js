@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import './App.css';
 import CountUp from 'react-countup';
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import { FaBeer } from 'react-icons/fa';
+import { BiBeer } from 'react-icons/bi';
 
 function App() {  
   const dateConverter = (startDate, timeEnd) => {
@@ -9,9 +13,24 @@ function App() {
     const one_day = 1000*60*60*24;
     let result
     result = Math.ceil((newEndDate.getTime()-newStartDate.getTime())/(one_day))
-    console.log('date Converter result', result)
-    if (result < 0 ) {return 0}
+    //if (result < 0 ) {return 0}
     return result
+  }
+
+  const dateToText = (startDate, timeEnd) => {
+    const newStartDate= new Date(startDate);
+    const newEndDate=new Date(timeEnd);
+    let result = dateConverter(newStartDate, newEndDate);
+    let textResponse = "";
+
+    // start date is bdate, end date is date of the event
+    if (result > 0) {
+      textResponse = "when you were " + Math.round(Math.abs((result/365))) + " years old.";
+    }
+    else {
+      textResponse = Math.round((result/365)) + " years before you were born.";
+    }
+    return textResponse;
   }
 
 
@@ -123,27 +142,121 @@ function App() {
             Submit
           </button>
         
+          <br/><br/>
         <h2>
           {milesMsg}
           <CountUp
             start={milesTraveled}
-            end={milesTraveled+(11104)}
-            duration={600}
+            end={milesTraveled+(22208)}
+            duration={1200}
             separator=","
             suffix=" miles"
           ></CountUp>
         </h2>
 
-
+        <br/><br/>
         <h2>{moonPhase} {knownPhase}</h2>
         
+        <br/><br/>
         <h2>{progressMade}</h2>
         
         </form>
-        <p>Source code: <a href="https://github.com/jackmckinstry/spacetime-timeline" rel="noreferrer">here</a></p>
-      </body>
+        <br/><br/><br/><br/>
+          <VerticalTimeline>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<BiBeer/>}
+            >
+              <h3 className="vertical-timeline-element-title">EVENT</h3>
+              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <p>
+              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              </p>
+            </VerticalTimelineElement>
+          </VerticalTimeline>
 
-      
+        <br/>
+        <p>Site source code: <a href="https://github.com/jackmckinstry/spacetime-timeline" rel="noreferrer">here</a></p>
+        <p>Timeline events and dates sourced from <a href="https://www.tutorialspoint.com/fundamentals_of_science_and_technology/space_exploration_timeline.htm" rel="noreferrer">tutorialspoint.com</a></p>
+      </body>
     </div>
   );
 }
