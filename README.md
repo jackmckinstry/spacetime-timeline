@@ -1,8 +1,7 @@
 # spacetime-timeline
 
-## Work in Progress...
-
-Timeline of outer space webapp, hosted on github pages [here.](https://jackmckinstry.github.io/spacetime-timeline/)
+Timeline of outer space webapp, hosted on Github Pages [here.](https://jackmckinstry.github.io/spacetime-timeline/)
+Created for ASEN 1969: Pathway to Space.
 
 A user may enter their birthday and discover some fun facts about space since they've been born.
 
