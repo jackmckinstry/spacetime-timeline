@@ -3,8 +3,8 @@ import './App.css';
 import CountUp from 'react-countup';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { FaBeer } from 'react-icons/fa';
-import { BiBeer } from 'react-icons/bi';
+import { IoIosRocket } from 'react-icons/io';
+import { FiStar } from 'react-icons/fi';;
 
 function App() {  
   const dateConverter = (startDate, timeEnd) => {
@@ -23,12 +23,30 @@ function App() {
     let result = dateConverter(newStartDate, newEndDate);
     let textResponse = "";
 
+    if (timeEnd.getMonth() === 1) textResponse += "January ";
+    else if (timeEnd.getMonth() === 2) textResponse += "February ";
+    else if (timeEnd.getMonth() === 3) textResponse += "March ";
+    else if (timeEnd.getMonth() === 4) textResponse += "April ";
+    else if (timeEnd.getMonth() === 5) textResponse += "May ";
+    else if (timeEnd.getMonth() === 6) textResponse += "June ";
+    else if (timeEnd.getMonth() === 7) textResponse += "July ";
+    else if (timeEnd.getMonth() === 8) textResponse += "August ";
+    else if (timeEnd.getMonth() === 9) textResponse += "September ";
+    else if (timeEnd.getMonth() === 10) textResponse += "October ";
+    else if (timeEnd.getMonth() === 11) textResponse += "November ";
+    else if (timeEnd.getMonth() === 0) textResponse += "December ";
+    
+    // issue with dates and years for month of december
+    if (timeEnd.getMonth() === 0) textResponse += " " + newEndDate.getFullYear()-1 + ", ";
+    else textResponse += " " + newEndDate.getFullYear() + ", ";
+
+
     // start date is bdate, end date is date of the event
     if (result > 0) {
-      textResponse = "when you were " + Math.round(Math.abs((result/365))) + " years old.";
+      textResponse += "when you were " + Math.round(Math.abs((result/365))) + " years old.";
     }
     else {
-      textResponse = Math.round((result/365)) + " years before you were born.";
+      textResponse += Math.round(Math.abs((result/365))) + " years before you were born.";
     }
     return textResponse;
   }
@@ -36,7 +54,7 @@ function App() {
 
   const [bDate, setBDate] = useState("");
   
-  const [h1_Text, setHeading] = useState("Enter your birthday:");
+  const [h1_Text, setHeading] = useState("Enter your birthday, then scroll:");
   const [h2_Text, setSubHeading] = useState("");
   
   const [moonPhase, setMoonPhase] = useState("");
@@ -71,7 +89,7 @@ function App() {
     var y = newBDate.getFullYear();
     var m = newBDate.getMonth() + 1;
     var d = newBDate.getDate() + 1
-    if (m == 1 || m == 2) {
+    if (m === 1 || m === 2) {
       y--;
       m += 12;
     }
@@ -166,89 +184,330 @@ function App() {
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<IoIosRocket/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">First (US designed) rocket reaches edge of space</h3>
+              <h4 className="vertical-timeline-element-subtitle">WAC Corporal</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1946, 5))}
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<FiStar/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">The first pictures of the Earth were taken from an altitude of 105 km</h3>
+              <h4 className="vertical-timeline-element-subtitle">V-2</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1946, 10))}
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<IoIosRocket/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">First intercontinental Ballistic Missile (ICBM) developed</h3>
+              <h4 className="vertical-timeline-element-subtitle">R-7</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1957, 8))}
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<FiStar/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">First artificial satellite launched</h3>
+              <h4 className="vertical-timeline-element-subtitle">Sputnik 1</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1957, 10))}
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<IoIosRocket/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">First animal (dog named Laika) sent to orbit</h3>
+              <h4 className="vertical-timeline-element-subtitle">Sputnik 2</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1957, 11))}
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<FiStar/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">First photograph of Earth taken from the orbit (by NASA)</h3>
+              <h4 className="vertical-timeline-element-subtitle">Explorer 6</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1959, 8))}
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<IoIosRocket/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">First manned flight carrying Yuri Gagarin</h3>
+              <h4 className="vertical-timeline-element-subtitle">Vostok 1</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1961, 4))}
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
               iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-              icon={<BiBeer/>}
+              icon={<FiStar/>}
             >
-              <h3 className="vertical-timeline-element-title">EVENT</h3>
-              <h5 className="vertical-timeline-element-subtitle">COUNTRY</h5>
+              <h3 className="vertical-timeline-element-title">First orbital solar observatory (by NASA)</h3>
+              <h4 className="vertical-timeline-element-subtitle">OSO-1</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
               <p>
-              {"MONTH YEAR, " + dateToText(new Date(bDate), new Date(2015, 12))}
+              {dateToText(new Date(bDate), new Date(1962, 3))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First woman in space (Valentina Tereshkova)</h3>
+              <h4 className="vertical-timeline-element-subtitle">Vostok 6</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1963, 6))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First artificial satellite around the Moon</h3>
+              <h4 className="vertical-timeline-element-subtitle">Luna 10</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1966, 3))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First piloted orbital mission of Moon (by NASA)</h3>
+              <h4 className="vertical-timeline-element-subtitle">Apollo 8</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1968, 12))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First human on the Moon & first space launch from a celestial body (by NASA) - Commander Neil Armstrong and Pilot Buzz Aldrin</h3>
+              <h4 className="vertical-timeline-element-subtitle">Apollo 11</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1969, 7))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First space station</h3>
+              <h4 className="vertical-timeline-element-subtitle">Salyut 1</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1971, 4))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First human made object sent on escape trajectory away from the Sun</h3>
+              <h4 className="vertical-timeline-element-subtitle">Pioneer 10</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1972, 3))}
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First Venus soil samples and sound recording of another world</h3>
+              <h4 className="vertical-timeline-element-subtitle">Venera 13</h4>
+              <h5 className="vertical-timeline-element-subtitle">USSR</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1982, 3))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First untethered spacewalk, Bruce McCandless II</h3>
+              <h4 className="vertical-timeline-element-subtitle">STS-41-B</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1984, 2))}
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First photograph of the whole Solar System - Pale Blue Dot</h3>
+              <h4 className="vertical-timeline-element-subtitle">Voyager 1</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1990, 2))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First orbital radio observatory</h3>
+              <h4 className="vertical-timeline-element-subtitle">HALCA</h4>
+              <h5 className="vertical-timeline-element-subtitle">Japan</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1997, 2))}
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">International Space Station launched</h3>
+              <h4 className="vertical-timeline-element-subtitle">ISS</h4>
+              <h5 className="vertical-timeline-element-subtitle">NASA, Roscosmos, JAXA, ESA, and CSA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(1998, 11))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First landing on an asteroid</h3>
+              <h4 className="vertical-timeline-element-subtitle">NEAR Shoemaker</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2001, 2))}
+              </p>
+            </VerticalTimelineElement>
+
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First soft landing on Titan (Moon of Saturn)</h3>
+              <h4 className="vertical-timeline-element-subtitle">Cassini Huygens</h4>
+              <h5 className="vertical-timeline-element-subtitle">ESA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2005, 1))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First sample return from comet (81P/Wild)</h3>
+              <h4 className="vertical-timeline-element-subtitle">Stardust</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2006, 1))}
+              </p>
+            </VerticalTimelineElement>
+            
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First space telescope designated to search for Earth-like exoplanets</h3>
+              <h4 className="vertical-timeline-element-subtitle">Kepler Mission</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2009, 3))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First orbit of Mercury</h3>
+              <h4 className="vertical-timeline-element-subtitle">MESSENGER</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2011, 3))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">First manmade probe in interstellar space</h3>
+              <h4 className="vertical-timeline-element-subtitle">Voyager 1</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2012, 8))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+              icon={<FiStar/>}
+            >
+              <h3 className="vertical-timeline-element-title">First man-made probe to make a planned and soft landing on a comet</h3>
+              <h4 className="vertical-timeline-element-subtitle">Rosetta</h4>
+              <h5 className="vertical-timeline-element-subtitle">ESA</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2014, 11))}
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+              icon={<IoIosRocket/>}
+            >
+              <h3 className="vertical-timeline-element-title">Lettuce was the first food eaten that was grown in space</h3>
+              <h4 className="vertical-timeline-element-subtitle">ISS</h4>
+              <h5 className="vertical-timeline-element-subtitle">USA & Japan</h5>
+              <p>
+              {dateToText(new Date(bDate), new Date(2015, 8))}
               </p>
             </VerticalTimelineElement>
           </VerticalTimeline>
